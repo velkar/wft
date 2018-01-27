@@ -1,0 +1,24 @@
+﻿<h1>Hi {{vm.user.username}}!</h1>
+<p>You're logged in!!</p>
+<h3>All registered users:</h3>
+</br>
+</br>
+Accounts : <select ng-model="account" ng-options="acc.name for acc in vm.accounts" 
+				ng-change="vm.loadProjects(account.id)">
+			</select>
+</br>
+</br>
+Projects : <select ng-model="project" ng-options="pjt.name for pjt in vm.projects" 
+				ng-change="vm.loadResources(account.id,project.id)">
+			</select>
+</br>
+</br>
+Resources : 
+<ul>
+    <li ng-repeat="user in vm.resources">
+        {{user.userid}} ({{user.firstname}} {{user.lastname}})
+        - <a ng-click="vm.deleteUser(user.id)">Delete</a>
+    </li>
+</ul>
+<p>&nbsp;</p>
+<p><a href="#!/login" class="btn btn-primary">Logout</a></p>
