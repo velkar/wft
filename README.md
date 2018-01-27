@@ -14,5 +14,5 @@ Set Up:
 
 1) Clone this code base
 2) Go to 'backend/' folder
-3) Run 'node update', this will create 'node_modules' folder inside project.
+3) Run 'npm update', this will create 'node_modules' folder inside project.
 4) Start the Apache Cassandra
