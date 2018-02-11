@@ -3,8 +3,10 @@ var client = new cassandra.Client({contactPoints: ['127.0.0.1'], keyspace: 'test
 
 module.exports = {
 	// DB read operations
-	dbReadResources : function(callback){
-		client.execute("SELECT * FROM knowledge_tracker", function (err, result) {
+	dbReadResourcesByPjt : function(pjtCode,callback){
+		var query = "SELECT * FROM skilltracker WHERE wbscode='"+pjtCode+"'";
+		console.log("The value of choosen query is "+query);
+		client.execute(query, function (err, result) {
 			if (!err){
 	           if ( result.rows.length > 0 ) {
 	           		console.log(result.rows);
@@ -17,7 +19,7 @@ module.exports = {
 	       }
     	});
 	},
-	dbReadAll : function(callback){
+	dbReadByEmpId : function(callback){
 		client.execute("SELECT * FROM knowledge_tracker where userid=?", function (err, result) {
 			if (!err){
 	           if ( result.rows.length > 0 ) {
@@ -33,9 +35,7 @@ module.exports = {
 	},
 	// DB insert operations
 	dbWrite : function(callback){
-		client.execute("INSERT INTO knowledge_tracker(userid,firstname,lastname,tech1,techl1l1atdate,techl2)"+ 
-			"values('amsv.subi',{'poornesh.siva@outlook.com','subatra.pharmacy@outlook.com'},'Subatradevi',"+
-			"'Siva',{'1984-12-09 11:20:00':'Bro Bday','2010-11-10 13:00:00':'Poornesh Bday'},[123,100,167])", 
+		client.execute("UPDATE kts1 set", 
 		function (err, result) {
 			if (!err){
 	           console.log(results);
@@ -48,17 +48,16 @@ module.exports = {
 
 	dbReadAccounts : function(callback){
 		console.log("dbService.dbReadAccounts")
-		return [{"id":1,"name":"SBSA"},
-				{"id":2,"name":"MASTER"},
-				{"id":3,"name":"GOOGLE"},
-				{"id":4,"name":"APPLE"}];
+		return [{"id":'SBSA',"name":"SBSA"},
+				{"id":'MASTER',"name":"MASTER"},
+				{"id":'GOOGLE',"name":"GOOGLE"},
+				{"id":'APPLE',"name":"APPLE"}];
 	},
 
 	dbReadProjects : function(callback){
-		return [{"id":1,"accountId":1,"name":"Selfie"},
-							{"id":2,"accountId":1,"name":"nBOL"},
-							{"id":3,"accountId":2,"name":"AWC Channel"},
-							{"id":4,"accountId":1,"name":"Mandate Testing"}];
+		return [{"id":'SELFIE',"accountId":'SBSA',"name":"Selfie"},
+				{"id":'NBOL',"accountId":'SBSA',"name":"nBOL"},
+				{"id":'MAND',"accountId":'SBSA',"name":"Mandate Testing"}];
 	}
 };
 

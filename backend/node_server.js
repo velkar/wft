@@ -8,9 +8,6 @@ var expressSession = require('express-session');
 var dbService  = require('./services/dbService.js');
 var loginService  = require('./services/loginService.js');
 
-const pugTmlt = require('pug');
-
-
 var port = 1337;
 // Setting context root for serving static files
 app.use(express.static('../'));
@@ -20,6 +17,15 @@ app.use(bodyParser.json());
 app.use(expressSession({secret : 'abcdefgh',
                         resave : true,
                         saveUninitialized : true}));
+
+var pMap = {};
+pMap['NBOL'] = 'BEU-SBA-PJ-BOL-TPS-DEV';
+pMap['SELFIE'] = 'BEU-SBA-PJ-SELFIE';
+pMap['MAND'] = 'BEU-SBA-PJ-MAN-TPS-DEV';
+
+console.log(pMap['NBOL']);
+
+
 //Add headers
 app.use(function (req, res, next) {
     //Website you wish to allow to connect
@@ -78,7 +84,8 @@ app.get('/accounts/:aId', function(req, res){
 // Handling data from POST from client side
 app.get('/accounts/:aId/projects/:pId', function(req, res){
     console.log("/accounts/id/projects/id starts with accountId,projectId : "+req.params.aId+","+req.params.pId);
-    dbService.dbReadResources(function(data){
+    console.log("map value of "+req.params.pId+" is "+pMap[req.params.pId]);
+    dbService.dbReadResourcesByPjt(pMap[req.params.pId],function(data){
             res.send(data);
         });
 })

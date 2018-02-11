@@ -1,0 +1,15 @@
+Tables for each skills
+1) Collection will not suitable frequent read & write and primary key will not set in collection element.
+2) One table with all skills as fields doesnt work, as in future if skills increased we can't change the primary key.
+3) One table for each skills
+
+Cons : 
+Doesnt obey cassandra rules.
+
+
+Tables with skills
+1) Follows cassandra basic rule
+2) Adding more skills with index creation within a table will help us to query faster.
+
+Primary Key : empid,
+Clustering column1 : WBSCODE

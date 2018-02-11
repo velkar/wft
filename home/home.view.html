@@ -1,24 +1,72 @@
-﻿<h1>Hi {{vm.user.username}}!</h1>
-<p>You're logged in!!</p>
-<h3>All registered users:</h3>
-</br>
+﻿<div class="col-md-10 col-md-offset-1">
+<p>Hi {{vm.user.username}}! You're logged in!!                  <a href="#!/login" class="btn btn-primary">Logout</a></p>
 </br>
 Accounts : <select ng-model="account" ng-options="acc.name for acc in vm.accounts" 
 				ng-change="vm.loadProjects(account.id)">
+				<option value=''>--Select Account--</option>
 			</select>
 </br>
 </br>
 Projects : <select ng-model="project" ng-options="pjt.name for pjt in vm.projects" 
 				ng-change="vm.loadResources(account.id,project.id)">
+				<option value=''>--Select Project--</option>
 			</select>
 </br>
 </br>
-Resources : 
-<ul>
-    <li ng-repeat="user in vm.resources">
-        {{user.userid}} ({{user.firstname}} {{user.lastname}})
-        - <a ng-click="vm.deleteUser(user.id)">Delete</a>
-    </li>
-</ul>
-<p>&nbsp;</p>
-<p><a href="#!/login" class="btn btn-primary">Logout</a></p>
+Resources:
+</br>
+<table>
+	<thead>
+	<tr>
+		<th>Emp Id</th>
+		<th>WBSCode</th>
+		<th>PM Name</th>
+		<th>Practice </th>
+		<th>Skill 1 </th>
+		<th>S1 L1 Tranining Date  - Planned</th>
+		<th>S1 L1 Tranining Date  - Actual</th>
+		<th>S1 L1 Completion Mode</th>
+		<th>S1 L2 Tranining Date  - Planned</th>
+		<th>S1 L2 Tranining Date  - Actual</th>
+		<th>S1 L2 Assessment Date  - Planned</th>
+		<th>S1 L2 Assessment Date  - Actual</th>
+		<th>S1 L2 Completion Mode <br></th>
+		<th>Skill 2</th>
+		<th>S2 L1 Tranining Date  - Planned</th>
+		<th>S2 L1 Tranining Date  - Actual</th>
+		<th>S2 L1 Completion Mode</th>
+		<th>S2 L2 Tranining Date  - Planned</th>
+		<th>S2 L2 Tranining Date  - Actual</th>
+		<th>S2 L2 Assessment Date  - Planned</th>
+		<th>S2 L2 Assessment Date  - Actual</th>
+		<th>S2 L2 Completion Mode</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="user in vm.resources">
+		<td>{{user.empid}}</td>
+		<td>{{user.wbscode}}</td>
+		<td>{{user.pmname}}</td>
+		<td>{{user.practice}}<br></td>
+		<td>{{user.skill1}}</td>
+		<td>{{user.s1l1tdp}}</td>
+		<td>{{user.s1l1tda}}</td>
+		<td>{{user.s1l1cm}}</td>
+		<td>{{user.s1l2tdp}}</td>
+		<td>{{user.s1l2tda}}</td>
+		<td>{{user.s1l2adp}}</td>
+		<td>{{user.s1l2ada}}</td>
+		<td>{{user.s1l2cm}}<br></td>
+		<td>{{user.skill2}}</td>
+		<td>{{user.s2l1tdp}}</td>
+		<td>{{user.s2l1tda}}</td>
+		<td>{{user.s2l1cm}}</td>
+		<td>{{user.s2l2tdp}}</td>
+		<td>{{user.s2l2tda}}</td>
+		<td>{{user.s2l2adp}}</td>
+		<td>{{user.s2l2ada}}</td>
+		<td>{{user.s2l2cm}}</td>
+	</tr>
+	</tbody>
+</table>
+</div>

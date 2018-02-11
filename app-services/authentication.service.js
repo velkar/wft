@@ -16,6 +16,7 @@
         return service;
 
         function login(username, password, callback) {
+            console.log("Inside AuthenticationService login");
             $http.post('/authenticate', { username: username, password: password })
                .then(
                 function (response) {
@@ -23,7 +24,6 @@
                 },function(error){
                     console.log("Error Occured");
                });
-
         }
 
         function setCredentials(username, password) {
@@ -40,7 +40,6 @@
             console.log("Setting headers with Authorization factors ");
             // set default auth header for http requests
             $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata;
-
             console.log("Preparing cookies with credentials information factors ");
             // store user details in globals cookie that keeps user logged in for 1 week (or until they logout)
             var cookieExp = new Date();

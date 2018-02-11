@@ -1,0 +1,155 @@
+CREATE TABLE test.resourceinfo (
+    empid text PRIMARY KEY,
+    pmname text,
+    practice text,
+    skillsdata map<text, text>,
+    wbscode text
+)
+
+CREATE TABLE test.resourceinfo1 (
+    empid text PRIMARY KEY,
+    pmname text,
+    practice text,
+    skillsdata frozen<list<frozen<map<text, text>>>>,
+    wbscode text
+)
+
+insert into  resourceinfo1(EMPID,WBSCODE,PMNAME,PRACTICE,SKILLSDATA) values('ve300433','WBS01','Anies','Java',[
+{'skill':'AngularJs','pl1td':'12/12/18','al1td':'12/12/18','pl1ad':'06/12/19','al1ad':'08/12/19','l1cm':'Tranining'},
+{'skill':'Devops','pl1td':'12/12/18','al1td':'12/12/18','pl1ad':'06/12/19','al1ad':'08/12/19','l1cm':'Tranining'}]);
+
+
+CREATE TYPE test.SKILLINFO (
+  PL1TD date,
+  AL1TD date,
+  PL1AD date,
+  AL1AD date,
+  L1CM text,
+  PL2TD date,
+  AL2TD date,
+  PL2AD date,
+  AL2AD date,
+  L2CM text,
+);
+
+
+
+CREATE TABLE test.RESOURCEINFO2 (
+    EMPID text PRIMARY KEY,
+    WBSCODE text,
+    PMNAME text,
+    PRACTICE text,
+    SKILLSDATA frozen<list<SKILLINFO>>);
+	
+insert into  resourceinfo2(EMPID,WBSCODE,PMNAME,PRACTICE,SKILLSDATA) values('ve300433','WBS01','Anies','Java',
+[
+{'name':'AngularJs','pl1td':'2018-12-12','al1td':'2018-12-12','pl1ad':'2018-12-12','al1ad':'2018-12-12','l1cm':'Tranining','pl2td':'2018-12-12','al2td':'2018-12-12','pl2ad':'2018-12-12','al2ad':'2018-12-12','l2cm':'Topgear'},
+{'name':'Devops','pl1td':'2018-12-12','al1td':'2018-12-12','pl1ad':'2018-12-12','al1ad':'2018-12-12','l1cm':'Tranining','pl2td':'2018-12-12','al2td':'2018-12-12','pl2ad':'2018-12-12','al2ad':'2018-12-12','l2cm':'Client App'}
+]
+);
+
+
+CREATE TYPE test.SKILLINFO (
+  NAME text,
+  PL1TD date,
+  AL1TD date,
+  PL1AD date,
+  AL1AD date,
+  L1CM text,
+  PL2TD date,
+  AL2TD date,
+  PL2AD date,
+  AL2AD date,
+  L2CM text,
+);
+
+
+insert into  resourceinfo2(EMPID,WBSCODE,PMNAME,PRACTICE,SKILLSDATA) values('ve300433','WBS01','Anies','Java',
+[{'name':'AngularJs','pl1td':'2018-12-12','al1td':'2018-12-12','pl1ad':'2018-12-12','al1ad':'2018-12-12','l1cm':'Tranining','pl2td':'2018-12-12','al2td':'2018-12-12','pl2ad':'2018-12-12','al2ad':'2018-12-12','l2cm':'Topgear'}
+]
+);
+
+
+
+
+
+CREATE TYPE test.SKILLINFO1 (
+  NAME text,
+  PL1TD date,
+  AL1TD date
+  )
+  
+  
+CREATE TABLE test.RESOURCEINFO3 (
+EMPID text PRIMARY KEY,
+WBSCODE text,
+PMNAME text,
+PRACTICE text,
+SKILLSDATA list<SKILLINFO1>);
+
+
+10/02
+CREATE TABLE SKILLTRACKER (
+EMPID text,
+WBSCODE text,
+PMNAME text,
+PRACTICE text,
+SKILL1 text,
+S1L1TDP date,
+S1L1TDA date,
+S1L1CM text,
+S1L2TDP date,
+S1L2TDA date,
+S1L2ADP date,
+S1L2ADA date,
+S1L2CM text,
+SKILL2 text,
+S2L1TDP date,
+S2L1TDA date,
+S2L1CM text,
+S2L2TDP date,
+S2L2TDA date,
+S2L2ADP date,
+S2L2ADA date,
+S2L2CM text,
+PRIMARY KEY (EMPID,WBSCODE)
+)
+
+CREATE INDEX I_WBSCODE ON SKILLTRACKER (WBSCODE);
+
+Insert into SKILLTRACKER(EMPID,WBSCODE,PMNAME,PRACTICE,SKILL1,S1L1TDP,S1L1TDA,S1L1CM,S1L2TDP,S1L2TDA,S1L2ADP,S1L2ADA,S1L2CM,SKILL2,S2L1TDP,S2L1TDA,S2L1CM,S2L2TDP,S2L2TDA,S2L2ADP,S2L2ADA,S2L2CM ) values (
+'sh460450','BEU-SBA-PJ-SELFIE','Mena Vinnokota','Testing','MS-VB','2017-12-12','2017-12-24','External Training','2018-01-14','2018-01-20',
+'2018-01-24','2018-02-10','Topgear','Devops','2017-12-13','2017-12-25','Digital Tranformation','2018-01-14','2018-01-20',
+'2018-01-24','2018-02-10','Topcoder')
+
+Insert into SKILLTRACKER(EMPID,WBSCODE,PMNAME,PRACTICE,SKILL1,S1L1TDP,S1L1TDA,S1L1CM,S1L2TDP,S1L2TDA,S1L2ADP,S1L2ADA,S1L2CM,SKILL2,S2L1TDP,S2L1TDA,S2L1CM,S2L2TDP,S2L2TDA,S2L2ADP,S2L2ADA,S2L2CM ) values (
+'ve300433','BEU-SBA-PJ-BOL-TPS-DEV','Anies D','Java','Angular JS','2017-12-12','2017-12-24','External Training','2018-01-14','2018-01-20',
+'2018-01-24','2018-02-10','Topgear','Apache Cassandra','2017-12-13','2017-12-25','External Training','2018-01-15','2018-01-21',
+'2018-01-25','2018-02-11','WFT App')
+
+Insert into SKILLTRACKER(EMPID,WBSCODE,PMNAME,PRACTICE,SKILL1,S1L1TDP,S1L1TDA,S1L1CM,S1L2TDP,S1L2TDA,S1L2ADP,S1L2ADA,S1L2CM,SKILL2,S2L1TDP,S2L1TDA,S2L1CM,S2L2TDP,S2L2TDA,S2L2ADP,S2L2ADA,S2L2CM ) values (
+'ra304567','BEU-SBA-PJ-MAN-TPS-DEV','Ayyappan S','Testing','MS-VB','2017-12-12','2017-12-24','External Training','2018-01-14','2018-01-20',
+'2018-01-24','2018-02-10','Topgear','Selenium','2017-12-13','2017-12-25','W3Schools','2018-01-15','2018-01-21',
+'2018-01-25','2018-02-11','Eliza Test')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
