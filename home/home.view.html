@@ -1,5 +1,4 @@
-﻿<div class="col-md-10 col-md-offset-1">
-<p>Hi {{vm.user.username}}! You're logged in!!                  <a href="#!/login" class="btn btn-primary">Logout</a></p>
+﻿<p>Hi {{vm.user.username}}! You're logged in!!&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="#!/login" class="btn btn-primary">Logout</a></p>
 </br>
 Accounts : <select ng-model="account" ng-options="acc.name for acc in vm.accounts" 
 				ng-change="vm.loadProjects(account.id)">
@@ -11,6 +10,13 @@ Projects : <select ng-model="project" ng-options="pjt.name for pjt in vm.project
 				ng-change="vm.loadResources(account.id,project.id)">
 				<option value=''>--Select Project--</option>
 			</select>
+</br>
+</br>
+Or
+</br>
+</br>
+	Search by EmpID : <input type="text" name="empid" id="empid" ng-model="empId" ng-dblclick="vm.searchByEmpId(empId)"/>
+</br>
 </br>
 </br>
 Resources:
@@ -69,4 +75,3 @@ Resources:
 	</tr>
 	</tbody>
 </table>
-</div>

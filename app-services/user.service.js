@@ -12,6 +12,7 @@
         service.getAccounts = getAccounts;
         service.getProjects = getProjects;
         service.getResources = getResources;
+        service.getResourcesByEmpId = getResourcesByEmpId;
         
         return service;
 
@@ -28,6 +29,11 @@
         function getResources(accountId,projectId) {
             console.log("UserService.getResources with accountId, projectId : "+accountId+','+projectId);
             return $http.get('/accounts/'+accountId+'/projects/'+projectId).then(handleSuccess, handleError('Error getting resources'));
+        }
+
+        function getResourcesByEmpId(empId) {
+            console.log("UserService.getResourcesByEmpId with empId : "+empId);
+            return $http.get('/employee/'+empId).then(handleSuccess, handleError('Error getting resources'));
         }
 
         // private functions

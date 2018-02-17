@@ -89,6 +89,13 @@ app.get('/accounts/:aId/projects/:pId', function(req, res){
             res.send(data);
         });
 })
+// Handling data from POST from client side
+app.get('/employee/:eId', function(req, res){
+    console.log("/employee/eId of employee : "+req.params.eId);
+    dbService.dbReadResourcesByEmpId(req.params.eId,function(data){
+            res.send(data);
+        });
+})
 
 function routeValidate(sesFlag,req,res){
     console.log("Inside routeValidate");
