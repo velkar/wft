@@ -19,59 +19,70 @@ Or
 </br>
 </br>
 </br>
-Resources:
+Resources:	
 </br>
-<table>
-	<thead>
-	<tr>
-		<th>Emp Id</th>
-		<th>WBSCode</th>
-		<th>PM Name</th>
-		<th>Practice </th>
-		<th>Skill 1 </th>
-		<th>S1 L1 Tranining Date  - Planned</th>
-		<th>S1 L1 Tranining Date  - Actual</th>
-		<th>S1 L1 Completion Mode</th>
-		<th>S1 L2 Tranining Date  - Planned</th>
-		<th>S1 L2 Tranining Date  - Actual</th>
-		<th>S1 L2 Assessment Date  - Planned</th>
-		<th>S1 L2 Assessment Date  - Actual</th>
-		<th>S1 L2 Completion Mode <br></th>
-		<th>Skill 2</th>
-		<th>S2 L1 Tranining Date  - Planned</th>
-		<th>S2 L1 Tranining Date  - Actual</th>
-		<th>S2 L1 Completion Mode</th>
-		<th>S2 L2 Tranining Date  - Planned</th>
-		<th>S2 L2 Tranining Date  - Actual</th>
-		<th>S2 L2 Assessment Date  - Planned</th>
-		<th>S2 L2 Assessment Date  - Actual</th>
-		<th>S2 L2 Completion Mode</th>
-	</tr>
-	</thead>
-	<tbody>
-	<tr ng-repeat="user in vm.resources">
-		<td>{{user.empid}}</td>
-		<td>{{user.wbscode}}</td>
-		<td>{{user.pmname}}</td>
-		<td>{{user.practice}}<br></td>
-		<td>{{user.skill1}}</td>
-		<td>{{user.s1l1tdp}}</td>
-		<td>{{user.s1l1tda}}</td>
-		<td>{{user.s1l1cm}}</td>
-		<td>{{user.s1l2tdp}}</td>
-		<td>{{user.s1l2tda}}</td>
-		<td>{{user.s1l2adp}}</td>
-		<td>{{user.s1l2ada}}</td>
-		<td>{{user.s1l2cm}}<br></td>
-		<td>{{user.skill2}}</td>
-		<td>{{user.s2l1tdp}}</td>
-		<td>{{user.s2l1tda}}</td>
-		<td>{{user.s2l1cm}}</td>
-		<td>{{user.s2l2tdp}}</td>
-		<td>{{user.s2l2tda}}</td>
-		<td>{{user.s2l2adp}}</td>
-		<td>{{user.s2l2ada}}</td>
-		<td>{{user.s2l2cm}}</td>
-	</tr>
-	</tbody>
-</table>
+</br>
+<div>
+	<table class="table table-bordered">
+		<tr>
+			<th>Emp Id</th>
+			<th>WBSCode</th>
+			<th>PM Name</th>
+			<th>Practice </th>
+		</tr>
+		<tr ng-repeat="user in vm.resources">
+			<td>{{user.empid}}</td>
+			<td>{{user.wbscode}}</td>
+			<td>{{user.pmname}}</td>
+			<td>{{user.practice}}</td>
+		</tr>
+	</table>
+	<table class="table table-bordered">
+		<tr>
+			<th>Skill1</th>
+			<th>S1 L1 Tranining Date  - Planned</th>
+			<th>S1 L1 Tranining Date  - Actual</th>
+			<th>S1 L1 Completion Mode </th>
+			<th>S1 L2 Tranining Date  - Planned</th>
+			<th>S1 L2 Tranining Date  - Actual</th>
+			<th>S1 L2 Assessment Date  - Planned</th>
+			<th>S1 L2 Assessment Date  - Actual</th>
+			<th>S1 L2 Completion Mode <br></th>
+		</tr>
+		<tr ng-repeat="user in vm.resources">
+			<td>{{user.skill1}}</td>
+			<td>{{user.s1l1tdp}}</td>
+			<td>{{user.s1l1tda}}</td>
+			<td>{{user.s1l1cm}}</td>
+			<td>{{user.s1l2tdp}}</td>
+			<td>{{user.s1l2tda}}</td>
+			<td>{{user.s1l2adp}}</td>
+			<td>{{user.s1l2ada}}</td>
+			<td>{{user.s1l2cm}}</td>
+		</tr>
+	</table>
+	<table class="table table-bordered">
+		<tr>
+			<th>Skill2</th>
+			<th>S2 L1 Tranining Date  - Planned</th>
+			<th>S2 L1 Tranining Date  - Actual</th>
+			<th>S2 L1 Completion Mode</th>
+			<th>S2 L2 Tranining Date  - Planned</th>
+			<th>S2 L2 Tranining Date  - Actual</th>
+			<th>S2 L2 Assessment Date  - Planned</th>
+			<th>S2 L2 Assessment Date  - Actual</th>
+			<th>S2 L2 Completion Mode</th>
+		</tr>
+		<tr ng-repeat="user in vm.resources">
+			<td>{{user.skill2}}</td>
+			<td>{{user.s2l1tdp}}</td>
+			<td>{{user.s2l1tda}}</td>
+			<td>{{user.s2l1cm}}</td>
+			<td>{{user.s2l2tdp}}</td>
+			<td>{{user.s2l2tda}}</td>
+			<td>{{user.s2l2adp}}</td>
+			<td>{{user.s2l2ada}}</td>
+			<td>{{user.s2l2cm}}</td>
+		</tr>
+	</table>
+</div>
