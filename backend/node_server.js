@@ -19,12 +19,11 @@ app.use(expressSession({secret : 'abcdefgh',
                         saveUninitialized : true}));
 
 var pMap = {};
+
+// This need to be loaded from DB based on account
 pMap['NBOL'] = 'BEU-SBA-PJ-BOL-TPS-DEV';
 pMap['SELFIE'] = 'BEU-SBA-PJ-SELFIE';
 pMap['MAND'] = 'BEU-SBA-PJ-MAN-TPS-DEV';
-
-console.log(pMap['NBOL']);
-
 
 //Add headers
 app.use(function (req, res, next) {
