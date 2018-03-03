@@ -10,6 +10,7 @@
         var vm = this;
 
         vm.user = null;
+        vm.isEdit12 = false;
         vm.accounts = [];
         vm.projects = [];
         vm.resources = [];
@@ -17,6 +18,7 @@
         vm.loadProjects = loadProjects;
         vm.loadResources = loadResources;
         vm.searchByEmpId  = searchByEmpId;
+        vm.enableEdit  = enableEdit;
         
         initController();
 
@@ -57,6 +59,10 @@
                 .then(function(resources){
                     vm.resources = resources;
                 });
+        }
+
+        function enableEdit(obj){
+            vm.isEdit12 = true;
         }
 
        

@@ -15,7 +15,7 @@ Projects : <select ng-model="project" ng-options="pjt.name for pjt in vm.project
 Or
 </br>
 </br>
-	Search by EmpID : <input type="text" name="empid" id="empid" ng-model="empId" ng-dblclick="vm.searchByEmpId(empId)"/>
+	Search by EmpID : <input type="text" id="empid" ng-model="empId" ng-dblclick="vm.searchByEmpId(empId)"/>
 </br>
 </br>
 </br>
@@ -57,7 +57,10 @@ Resources:
 			<td>{{user.s1l2tdp}}</td>
 			<td>{{user.s1l2tda}}</td>
 			<td>{{user.s1l2adp}}</td>
-			<td>{{user.s1l2ada}}</td>
+			<td ng-dblclick="vm.enableEdit(this)">
+				<div ng-show='{{!vm.isEdit12}}'>{{user.s1l2ada}}</div>
+				<input ng-show={{vm.isEdit12}} type='text' name='user.s1l2ada' value={user.s1l2ada}}>
+			</td>
 			<td>{{user.s1l2cm}}</td>
 		</tr>
 	</table>
