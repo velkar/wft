@@ -5,12 +5,16 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['UserService', '$rootScope'];
-    function HomeController(UserService, $rootScope) {
+    HomeController.$inject = ['UserService', '$rootScope','$parse'];
+    function HomeController(UserService, $rootScope, $parse) {
         var vm = this;
 
         vm.user = null;
+        vm.isEdit7 = false;
+        vm.isEdit8 = false;
+        vm.isEdit10 = false;
         vm.isEdit12 = false;
+        vm.isEdit13 = false;
         vm.accounts = [];
         vm.projects = [];
         vm.resources = [];
@@ -61,8 +65,18 @@
                 });
         }
 
-        function enableEdit(obj){
-            vm.isEdit12 = true;
+        // Dynamically create,assign variable to the $scope
+        function enableEdit(obj,fieldFlag){
+            //Creating variable from string
+            var getter = $parse(fieldFlag);
+            var setter = getter.assign;
+            if(getter(vm) == false){
+                setter(vm,true);
+            }else{
+                setter(vm,false);
+                //UserService.updateValues()
+            }
+            
         }
 
        

@@ -52,16 +52,28 @@ Resources:
 		<tr ng-repeat="user in vm.resources">
 			<td>{{user.skill1}}</td>
 			<td>{{user.s1l1tdp}}</td>
-			<td>{{user.s1l1tda}}</td>
-			<td>{{user.s1l1cm}}</td>
-			<td>{{user.s1l2tdp}}</td>
-			<td>{{user.s1l2tda}}</td>
-			<td>{{user.s1l2adp}}</td>
-			<td ng-dblclick="vm.enableEdit(this)">
-				<div ng-show='{{!vm.isEdit12}}'>{{user.s1l2ada}}</div>
-				<input ng-show={{vm.isEdit12}} type='text' name='user.s1l2ada' value={user.s1l2ada}}>
+			<td ng-dblclick="vm.enableEdit(this,'isEdit7')">
+				<div ng-if='!vm.isEdit7'>{{user.s1l1tda}}</div>
+				<div ng-if='vm.isEdit7'><input type='text' name='user.s1l1tda' ng-model='user.s1l1tda'></div>
 			</td>
-			<td>{{user.s1l2cm}}</td>
+			<td ng-dblclick="vm.enableEdit(this,'isEdit8')">
+				<div ng-if='!vm.isEdit8'>{{user.s1l1cm}}</div>
+				<div ng-if='vm.isEdit8'><input type='text' name='user.s1l1cm' ng-model='user.s1l1cm'></div>
+			</td>
+			<td>{{user.s1l2tdp}}</td>
+			<td ng-dblclick="vm.enableEdit(this,'isEdit10')">
+				<div ng-if='!vm.isEdit10'>{{user.s1l2tda}}</div>
+				<div ng-if='vm.isEdit10'><input type='text' name='user.s1l2tda' ng-model='user.s1l2tda'></div>
+			</td>
+			<td>{{user.s1l2adp}}</td>
+			<td ng-dblclick="vm.enableEdit(this,'isEdit12')">
+				<div ng-if='!vm.isEdit12'>{{user.s1l2ada}}</div>
+				<div ng-if='vm.isEdit12'><input type='text' name='user.s1l2ada' ng-model='user.s1l2ada'></div>
+			</td>
+			<td ng-dblclick="vm.enableEdit(this,'isEdit13')">
+				<div ng-if='!vm.isEdit13'>{{user.s1l2cm}}</div>
+				<div ng-if='vm.isEdit13'><input type='text' name='user.s1l2cm' ng-model='user.s1l2cm'></div>
+			</td>
 		</tr>
 	</table>
 	<table class="table table-bordered">
