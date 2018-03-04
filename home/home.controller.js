@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     'use strict';
 
     angular
@@ -66,7 +66,8 @@
         }
 
         // Dynamically create,assign variable to the $scope
-        function enableEdit(obj,fieldFlag){
+        function enableEdit(json,fieldFlag){
+            alert(JSON.parse(json));
             //Creating variable from string
             var getter = $parse(fieldFlag);
             var setter = getter.assign;
@@ -74,7 +75,7 @@
                 setter(vm,true);
             }else{
                 setter(vm,false);
-                //UserService.updateValues()
+                UserService.updateValues({})
             }
             
         }

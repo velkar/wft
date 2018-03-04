@@ -52,7 +52,7 @@ Resources:
 		<tr ng-repeat="user in vm.resources">
 			<td>{{user.skill1}}</td>
 			<td>{{user.s1l1tdp}}</td>
-			<td ng-dblclick="vm.enableEdit(this,'isEdit7')">
+			<td ng-dblclick="vm.enableEdit('{s1l1tda:'+'{{user.s1l1tda}}'+'}','isEdit7')">
 				<div ng-if='!vm.isEdit7'>{{user.s1l1tda}}</div>
 				<div ng-if='vm.isEdit7'><input type='text' name='user.s1l1tda' ng-model='user.s1l1tda'></div>
 			</td>
