@@ -15,6 +15,10 @@
         vm.isEdit10 = false;
         vm.isEdit12 = false;
         vm.isEdit13 = false;
+        vm.isEdit14 = false;
+        vm.isEdit17 = false;
+        vm.isEdit19 = false;
+        vm.isEdit20 = false;
         vm.accounts = [];
         vm.projects = [];
         vm.resources = [];
@@ -66,8 +70,7 @@
         }
 
         // Dynamically create,assign variable to the $scope
-        function enableEdit(json,fieldFlag){
-            alert(JSON.parse(json));
+        function enableEdit(field,value,fieldFlag){
             //Creating variable from string
             var getter = $parse(fieldFlag);
             var setter = getter.assign;
@@ -75,7 +78,7 @@
                 setter(vm,true);
             }else{
                 setter(vm,false);
-                UserService.updateValues({})
+                //UserService.updateValues({})
             }
             
         }
