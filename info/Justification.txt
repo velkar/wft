@@ -13,3 +13,6 @@ Tables with skills
 
 Primary Key : empid,
 Clustering column1 : WBSCODE
+
+
+https://github.com/velkar/workforcetrans.git
