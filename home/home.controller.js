@@ -26,7 +26,7 @@
         vm.loadProjects = loadProjects;
         vm.loadResources = loadResources;
         vm.searchByEmpId  = searchByEmpId;
-        vm.enableEdit  = enableEdit;
+        vm.processEdit  = processEdit;
         
         initController();
 
@@ -70,15 +70,17 @@
         }
 
         // Dynamically create,assign variable to the $scope
-        function enableEdit(field,value,fieldFlag){
+        function processEdit(empId,field,value,fieldFlag){
             //Creating variable from string
             var getter = $parse(fieldFlag);
             var setter = getter.assign;
             if(getter(vm) == false){
                 setter(vm,true);
             }else{
-                setter(vm,false);
-                //UserService.updateValues({})
+                UserService.updateValues(empId,field,value)
+                    .then(function(resources){
+                         setter(vm,false);
+                });
             }
             
         }

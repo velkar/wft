@@ -96,6 +96,14 @@ app.get('/employee/:eId', function(req, res){
         });
 })
 
+// Handling data from POST from client side
+app.put('/employee/:eId/:fId/:vId', function(req, res){
+    console.log("/employee/eId of employee : "+req.params.eId+" "+req.params.Id+" "+req.params.vId);
+    dbService.dbUpdateResourceByEmpId(req.params.eId,req.params.fId,req.params.vId,function(data){
+            res.send(data);
+        });
+})
+
 function routeValidate(sesFlag,req,res){
     console.log("Inside routeValidate");
     if ((sesFlag && loginService.isValidSession(req.session.username, req.session.password)) 
