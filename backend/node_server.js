@@ -97,9 +97,9 @@ app.get('/employee/:eId', function(req, res){
 })
 
 // Handling data from POST from client side
-app.put('/employee/:eId/:fId/:vId', function(req, res){
+app.put('/employee/:eId/:wId/:fId/:vId', function(req, res){
     console.log("/employee/eId of employee : "+req.params.eId+" "+req.params.Id+" "+req.params.vId);
-    dbService.dbUpdateResourceByEmpId(req.params.eId,req.params.fId,req.params.vId,function(data){
+    dbService.dbUpdateResourceByEmpId(req.params.eId,req.params.wId,req.params.fId,req.params.vId,function(data){
             res.send(data);
         });
 })

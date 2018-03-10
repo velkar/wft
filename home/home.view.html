@@ -52,28 +52,37 @@ Resources:
 		<tr ng-repeat="user in vm.resources">
 			<td>{{user.skill1}}</td>
 			<td>{{user.s1l1tdp}}</td>
-			<td ng-dblclick="vm.processEdit(user.empid,'s1l1tda',user.s1l1tda,'isEdit7')">
+			<td ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l1tda',user.s1l1tda,'isEdit7')">
 				<div ng-if='!vm.isEdit7'>{{user.s1l1tda}}</div>
 				<div ng-if='vm.isEdit7'><input type='text' name='user.s1l1tda' 
-					ng-dblclick="vm.processEdit('s1l1tda',user.s1l1tda,'isEdit7')" ng-model='user.s1l1tda'></div>
+					ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l1tda',user.s1l1tda,'isEdit7')" 
+					ng-model='user.s1l1tda'></div>
 			</td>
-			<td ng-dblclick="vm.processEdit(user.empid,'s1l1cm',user.s1l1cm,'isEdit8')">
+			<td ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l1cm',user.s1l1cm,'isEdit8')">
 				<div ng-if='!vm.isEdit8'>{{user.s1l1cm}}</div>
-				<div ng-if='vm.isEdit8'><input type='text' name='user.s1l1cm' ng-model='user.s1l1cm'></div>
+				<div ng-if='vm.isEdit8'><input type='text' name='user.s1l1cm' 
+					ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l1cm',user.s1l1cm,'isEdit8')" 
+					ng-model='user.s1l1cm'></div>
 			</td>
 			<td>{{user.s1l2tdp}}</td>
-			<td ng-dblclick="vm.processEdit(user.empid,'s1l2tda',user.s1l2tda,'isEdit10')">
+			<td ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l2tda',user.s1l2tda,'isEdit10')">
 				<div ng-if='!vm.isEdit10'>{{user.s1l2tda}}</div>
-				<div ng-if='vm.isEdit10'><input type='text' name='user.s1l2tda' ng-model='user.s1l2tda'></div>
+				<div ng-if='vm.isEdit10'><input type='text' name='user.s1l2tda' 
+					ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l2tda',user.s1l2tda,'isEdit10')" 
+					ng-model='user.s1l2tda'></div>
 			</td>
 			<td>{{user.s1l2adp}}</td>
-			<td ng-dblclick="vm.processEdit(user.empid,'s1l2ada',user.s1l2ada,'isEdit12')">
+			<td ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l2ada',user.s1l2ada,'isEdit12')">
 				<div ng-if='!vm.isEdit12'>{{user.s1l2ada}}</div>
-				<div ng-if='vm.isEdit12'><input type='text' name='user.s1l2ada' ng-model='user.s1l2ada'></div>
+				<div ng-if='vm.isEdit12'><input type='text' name='user.s1l2ada' 
+					ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l2ada',user.s1l2ada,'isEdit12')" 
+					ng-model='user.s1l2ada'></div>
 			</td>
-			<td ng-dblclick="vm.processEdit(user.empid,'s1l2cm',user.s1l2cm,'isEdit13')">
+			<td ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l2cm',user.s1l2cm,'isEdit13')">
 				<div ng-if='!vm.isEdit13'>{{user.s1l2cm}}</div>
-				<div ng-if='vm.isEdit13'><input type='text' name='user.s1l2cm' ng-model='user.s1l2cm'></div>
+				<div ng-if='vm.isEdit13'><input type='text' name='user.s1l2cm' 
+					ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l2cm',user.s1l2cm,'isEdit13')" 
+					ng-model='user.s1l2cm'></div>
 			</td>
 		</tr>
 	</table>
@@ -92,24 +101,32 @@ Resources:
 		<tr ng-repeat="user in vm.resources">
 			<td>{{user.skill2}}</td>
 			<td>{{user.s2l1tdp}}</td>
-			<td ng-dblclick="vm.processEdit(user.empid,'s2l1tda',user.s2l1tda,'isEdit14')">
+			<td ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s2l1tda',user.s2l1tda,'isEdit14')">
 				<div ng-if='!vm.isEdit14'>{{user.s2l1tda}}</div>
-				<div ng-if='vm.isEdit14'><input type='text' name='user.s2l1tda' ng-model='user.s2l1tda'></div>
+				<div ng-if='vm.isEdit14'><input type='text' name='user.s2l1tda'
+					ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s2l1tda',user.s2l1tda,'isEdit14')"  
+					ng-model='user.s2l1tda'></div>
 			</td>
 			<td>{{user.s2l1cm}}</td>
 			<td>{{user.s2l2tdp}}</td>
-			<td ng-dblclick="vm.processEdit(user.empid,'s2l2tda',user.s2l2tda,'isEdit17')">
+			<td ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s2l2tda',user.s2l2tda,'isEdit17')">
 				<div ng-if='!vm.isEdit17'>{{user.s2l2tda}}</div>
-				<div ng-if='vm.isEdit17'><input type='text' name='user.s2l2tda' ng-model='user.s2l2tda'></div>
+				<div ng-if='vm.isEdit17'><input type='text' name='user.s2l2tda' 
+					ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s2l2tda',user.s2l2tda,'isEdit17')"  
+					ng-model='user.s2l2tda'></div>
 			</td>
 			<td>{{user.s2l2adp}}</td>
-			<td ng-dblclick="vm.processEdit(user.empid,'{s2l2ada',user.s2l2ada,'isEdit19')">
+			<td ng-dblclick="vm.processEdit(user.empid,user.wbscode,'{s2l2ada',user.s2l2ada,'isEdit19')">
 				<div ng-if='!vm.isEdit19'>{{user.s2l2ada}}</div>
-				<div ng-if='vm.isEdit19'><input type='text' name='user.s2l2ada' ng-model='user.s2l2ada'></div>
+				<div ng-if='vm.isEdit19'><input type='text' name='user.s2l2ada' 
+					ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s2l2ada',user.s2l2ada,'isEdit19')"  
+					ng-model='user.s2l2ada'></div>
 			</td>
-			<td ng-dblclick="vm.processEdit(user.empid,'{s2l2cm', user.s2l2cm,'isEdit20')">
+			<td ng-dblclick="vm.processEdit(user.empid,user.wbscode,'{s2l2cm', user.s2l2cm,'isEdit20')">
 				<div ng-if='!vm.isEdit20'>{{user.s2l2cm}}</div>
-				<div ng-if='vm.isEdit20'><input type='text' name='user.s2l2cm' ng-model='user.s2l2cm'></div>
+				<div ng-if='vm.isEdit20'><input type='text' name='user.s2l2cm'
+					ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s2l2cm',user.s2l2cm,'isEdit20')"  
+					ng-model='user.s2l2cm'></div>
 			</td>
 		</tr>
 	</table>

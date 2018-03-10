@@ -1,12 +1,17 @@
+var ArrayList = require('arraylist');
 var cassandra = require('cassandra-driver');
 var client = new cassandra.Client({contactPoints: ['127.0.0.1'], keyspace: 'wipapp'});
 
+var nonDateFields = new ArrayList;
+nonDateFields.add(['s1l1cm','s1l2cm','s2l2cm']);
+
 module.exports = {
+
 	// DB read operations
 	dbReadResourcesByPjt : function(pjtCode,callback){
-		var query = "SELECT * FROM skilltracker WHERE wbscode='"+pjtCode+"'";
-		console.log("The value of choosen query is "+query);
-		client.execute(query, function (err, result) {
+		const query = 'SELECT * FROM skilltracker WHERE wbscode=?';
+		const param = [pjtCode];
+		client.execute(query,param,{ prepare: true }, function (err, result) {
 			if (!err){
 	           if ( result.rows.length > 0 ) {
 	           		console.log(result.rows);
@@ -21,8 +26,9 @@ module.exports = {
 	},
 
 	dbReadResourcesByEmpId : function(empId,callback){
-		var query = "SELECT * FROM skilltracker WHERE empid='"+empId+"'";
-		client.execute(query, function (err, result) {
+		const query = 'SELECT * FROM skilltracker WHERE empid=?';
+		const param = [empId];
+		client.execute(query,param,{ prepare: true }, function (err, result) {
 			if (!err){
 	           if ( result.rows.length > 0 ) {
 	           		console.log(result.rows);
@@ -36,10 +42,15 @@ module.exports = {
     	});
 	},
 
-	dbUpdateResourceByEmpId : function(empId,fieldId,valId,callback){
-		var query = "UPDATE skilltracker SET "+fieldId+"='"+valId+"' WHERE empid='"+empId+"'";
-		console.log(query);
-		client.execute(query, function (err, result) {
+	dbUpdateResourceByEmpId : function(empId,wbsId,fieldId,valId,callback){
+		const query = 'UPDATE skilltracker SET '+fieldId+'=? WHERE empid=? AND wbscode=?';
+		// Logic to check fields to be updated is date or string
+		// if date then parse in to LocalDate format, which cassandra supports
+		if(!nonDateFields.contains(fieldId)){
+			valId = new LocalDate.fromString(valId); 
+		}
+		const param = [fieldId,valId,empId,wbsId];
+		client.execute(query,param,{ prepare: true }, function (err, result) {
 			if (!err){
 	           if ( result.rows.length > 0 ) {
 	           		console.log(result.rows);

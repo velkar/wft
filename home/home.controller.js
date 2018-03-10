@@ -70,17 +70,21 @@
         }
 
         // Dynamically create,assign variable to the $scope
-        function processEdit(empId,field,value,fieldFlag){
+        function processEdit(empId,wbscode,field,value,fieldFlag){
             //Creating variable from string
             var getter = $parse(fieldFlag);
             var setter = getter.assign;
             if(getter(vm) == false){
                 setter(vm,true);
             }else{
-                UserService.updateValues(empId,field,value)
+                UserService.updateValues(empId,wbscode,field,value)
                     .then(function(resources){
                          setter(vm,false);
                 });
+
+
+
+
             }
             
         }

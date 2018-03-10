@@ -37,9 +37,9 @@
             return $http.get('/employee/'+empId).then(handleSuccess, handleError('Error getting resources'));
         }
 
-        function updateValues(empId,field,value) {
+        function updateValues(empId,wbscode,field,value) {
             console.log("UserService.updateValues with "+field +": "+value);
-            return $http.put('/employee/'+empId+'/'+field+'/'+value).then(handleSuccess, handleError('Error getting resources'));
+            return $http.put('/employee/'+empId+'/'+wbscode+'/'+field+'/'+value).then(handleSuccess, handleError('Error getting resources'));
         }
 
         // private functions
