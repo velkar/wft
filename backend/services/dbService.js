@@ -4,7 +4,7 @@ const LocalDate = require('cassandra-driver').types.LocalDate;
 const client = new cassandra.Client({contactPoints: ['127.0.0.1'], keyspace: 'wipapp'});
 
 const nonDateFields = new ArrayList;
-nonDateFields.add(['s1l1cm','s1l2cm','s2l2cm']);
+nonDateFields.add(['s1l1cm','s1l2cm','s2l1cm','s2l2cm']);
 
 module.exports = {
 
@@ -53,9 +53,10 @@ module.exports = {
 		const param = [valId,empId,wbsId];
 		client.execute(query,param, { prepare: true },function (err, result) {
 			if (!err){
-				return callback("SUCCESS");
+				return callback({success: true, holder: result});
 	        }else{
-	       		console.log(err);
+	        	console.log(err);
+	        	throw err;
 	       }
     	});
 	},

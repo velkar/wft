@@ -40,68 +40,50 @@ app.use(function (req, res, next) {
     next();
 });
 
-/*app.get('/', function(req, res){
-    console.log("Inside / route");
-    var isSession = req.session.username ? true : false;
-    console.log("Chk session available - " + isSession);
-    if (isSession){
-        console.log("Going to call routeValidation()");
-        routeValidate(isSession,req,res);
-    } 
-    else{
-        console.log("Going to render login.html");
-        res.sendfile(path.resolve("../login.html"));
-    }
-})*/
-
-// Handling data from POST from client side
 app.post('/authenticate', function(req, res){
     console.log("Inside /authenticate route");
     var sesFlag = req.session.username ? true : false;
     console.log("Chk session available - " + sesFlag);
     routeValidate(sesFlag,req,res);
     console.log("/authenticate ends!!!");
-    
 })
 
-// Handling data from POST from client side
 app.get('/accounts', function(req, res){
     console.log("Inside /accounts route");
     res.send(dbService.dbReadAccounts());
     console.log("/accounts ends!!!");
-    
 })
 
-// Handling data from POST from client side
 app.get('/accounts/:aId', function(req, res){
     console.log("Inside /accounts/id route with id value : "+req.params.id);
     res.send(dbService.dbReadProjects());
     console.log("/accounts/id ends!!!");
-    
 })
 
-// Handling data from POST from client side
 app.get('/accounts/:aId/projects/:pId', function(req, res){
     console.log("/accounts/id/projects/id starts with accountId,projectId : "+req.params.aId+","+req.params.pId);
     console.log("map value of "+req.params.pId+" is "+pMap[req.params.pId]);
     dbService.dbReadResourcesByPjt(pMap[req.params.pId],function(data){
             res.send(data);
-        });
+        }
+    );
 })
-// Handling data from POST from client side
+
 app.get('/employee/:eId', function(req, res){
     console.log("/employee/eId of employee : "+req.params.eId);
     dbService.dbReadResourcesByEmpId(req.params.eId,function(data){
             res.send(data);
-        });
+        }
+    );
 })
 
-// Handling data from POST from client side
 app.put('/employee/:eId/:wId/:fId/:vId', function(req, res){
     console.log("/employee/eId of employee : "+req.params.eId+" "+req.params.fId+" "+req.params.vId);
-    dbService.dbUpdateResourceByEmpId(req.params.eId,req.params.wId,req.params.fId,req.params.vId,function(data){
-            res.send(data);
-        });
+    dbService.dbUpdateResourceByEmpId(req.params.eId,req.params.wId,req.params.fId,req.params.vId,
+        function(resources){
+            if(resources.success) res.send(resources.holder);
+        }
+    );
 })
 
 function routeValidate(sesFlag,req,res){
@@ -114,7 +96,6 @@ function routeValidate(sesFlag,req,res){
             console.log("Set the request attributes in to session");
             req.session.username = req.body.username;
             req.session.password = req.body.password;
-            
         }
         console.log("Going to send SUCCESS");
         res.send("SUCCESS");

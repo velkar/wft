@@ -19,6 +19,7 @@
         vm.isEdit17 = false;
         vm.isEdit19 = false;
         vm.isEdit20 = false;
+        vm.message  = null;
         vm.accounts = [];
         vm.projects = [];
         vm.resources = [];
@@ -43,29 +44,33 @@
         function loadAllAccounts() {
             console.log("loadAllAccounts");
             UserService.getAccounts()
-                .then(function (accounts) {
-                    vm.accounts = accounts;
+                .then(function (resources) {
+                    if(resources.success) vm.accounts = resources.holder;
+                    else vm.message = resources.holder;
                 });
         }
 
         function loadProjects(accountId){
             UserService.getProjects(accountId)
-                .then(function(projects){
-                    vm.projects = projects;
+                .then(function(resources){
+                    if(resources.success) vm.projects = resources.holder;
+                    else vm.message = resources.holder;
                 });
         }
 
         function loadResources(accountId,projectId){
             UserService.getResources(accountId,projectId)
                 .then(function(resources){
-                    vm.resources = resources;
+                    if(resources.success) vm.resources = resources.holder;
+                    else vm.message = resources.holder;
                 });
         }
 
         function searchByEmpId(empId){
             UserService.getResourcesByEmpId(empId)
                 .then(function(resources){
-                    vm.resources = resources;
+                    if(resources.success) vm.resources = resources.holder;
+                    else vm.message = resources.holder;
                 });
         }
 
@@ -76,11 +81,16 @@
             var setter = getter.assign;
             if(getter(vm) == false){
                 setter(vm,true);
-            }else{
+            }else {
                 UserService.updateValues(empId,wbscode,field,value)
                     .then(function(resources){
-                         setter(vm,false);
-                });
+                        if(resources.success){
+                            setter(vm,false);
+                            vm.message  = "Data updated successfully !!";
+                        }else{
+                           vm.message  = resources.holder; 
+                        }
+                    });
 
 
 
