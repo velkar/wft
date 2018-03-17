@@ -16,6 +16,7 @@
         vm.isEdit12 = false;
         vm.isEdit13 = false;
         vm.isEdit14 = false;
+        vm.isEdit15 = false;
         vm.isEdit17 = false;
         vm.isEdit19 = false;
         vm.isEdit20 = false;
@@ -23,7 +24,10 @@
         vm.accounts = [];
         vm.projects = [];
         vm.resources = [];
-        
+        // DEV03 - Adding drop down list for L1,L2 completion modes
+        vm.l1List = ['Project level Classroom','Wipro level Classroom','Web-ex','ITMS','Udemy','TrendNxt-L1'];
+        vm.l2List = ['ITMS Advanced course linked with case study','Udemy Advanced course linked with case study','TrendNxt-L2','Top Gear case study','Project level case study'];
+
         vm.loadProjects = loadProjects;
         vm.loadResources = loadResources;
         vm.searchByEmpId  = searchByEmpId;
@@ -86,6 +90,7 @@
                     .then(function(resources){
                         if(resources.success){
                             setter(vm,false);
+
                             vm.message  = "Data updated successfully !!";
                         }else{
                            vm.message  = resources.holder; 

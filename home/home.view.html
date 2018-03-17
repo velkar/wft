@@ -60,9 +60,10 @@ Resources:	<h2>{{vm.message}}</h2>
 			</td>
 			<td ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l1cm',user.s1l1cm,'isEdit8')">
 				<div ng-if='!vm.isEdit8'>{{user.s1l1cm}}</div>
-				<div ng-if='vm.isEdit8'><input type='text' name='user.s1l1cm' 
-					ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l1cm',user.s1l1cm,'isEdit8')" 
-					ng-model='user.s1l1cm'></div>
+				<div ng-if='vm.isEdit8'><!--<select ng-model="{{user.s1l1cm}}" ng-options="x in vm.l1List"></select>-->
+				<input type='text' name='user.s1l1cm' 
+				ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l1cm',user.s1l1cm,'isEdit8')" 
+				ng-model='user.s1l1cm'></div>
 			</td>
 			<td>{{user.s1l2tdp}}</td>
 			<td ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s1l2tda',user.s1l2tda,'isEdit10')">
@@ -107,7 +108,12 @@ Resources:	<h2>{{vm.message}}</h2>
 					ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s2l1tda',user.s2l1tda,'isEdit14')"  
 					ng-model='user.s2l1tda'></div>
 			</td>
-			<td>{{user.s2l1cm}}</td>
+			<td ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s2l1cm',user.s2l1cm,'isEdit15')">
+				<div ng-if='!vm.isEdit15'>{{user.s2l1cm}}</div>
+				<div ng-if='vm.isEdit15'><input type='text' name='user.s2l1cm'
+					ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s2l1cm',user.s2l1cm,'isEdit15')"  
+					ng-model='user.s2l1cm'></div>
+			</td>
 			<td>{{user.s2l2tdp}}</td>
 			<td ng-dblclick="vm.processEdit(user.empid,user.wbscode,'s2l2tda',user.s2l2tda,'isEdit17')">
 				<div ng-if='!vm.isEdit17'>{{user.s2l2tda}}</div>
