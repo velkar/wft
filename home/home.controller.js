@@ -25,9 +25,9 @@
         vm.projects = [];
         vm.resources = [];
         // DEV03 - Adding drop down list for L1,L2 completion modes
-        vm.l1List = ['Project level Classroom','Wipro level Classroom','Web-ex','ITMS','Udemy','TrendNxt-L1'];
-        vm.l2List = ['ITMS Advanced course linked with case study','Udemy Advanced course linked with case study','TrendNxt-L2','Top Gear case study','Project level case study'];
-
+        vm.l1cmList = ["Project level Classroom","Wipro level Classroom","Web-ex","ITMS","Udemy","TrendNxt-L1"];
+        vm.l2cmList = ["ITMS Advanced course linked with case study","Udemy Advanced course linked with case study","TrendNxt-L2",
+                        "Top Gear case study","Project level case study"];
         vm.loadProjects = loadProjects;
         vm.loadResources = loadResources;
         vm.searchByEmpId  = searchByEmpId;
@@ -36,6 +36,7 @@
         initController();
 
         function initController() {
+            
             loadCurrentUser();
             loadAllAccounts();
         }
@@ -78,9 +79,8 @@
                 });
         }
 
-        // Dynamically create,assign variable to the $scope
         function processEdit(empId,wbscode,field,value,fieldFlag){
-            //Creating variable from string
+            // Dynamically create,assign variable to the $scope
             var getter = $parse(fieldFlag);
             var setter = getter.assign;
             if(getter(vm) == false){
@@ -90,16 +90,11 @@
                     .then(function(resources){
                         if(resources.success){
                             setter(vm,false);
-
                             vm.message  = "Data updated successfully !!";
                         }else{
                            vm.message  = resources.holder; 
                         }
                     });
-
-
-
-
             }
             
         }

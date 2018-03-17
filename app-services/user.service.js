@@ -43,7 +43,6 @@
                 handleError('Exception occured while updating resources'));
         }
 
-        // private functions
         function handleSuccess(res) {
             return { success: true, holder: res.data};
         }
