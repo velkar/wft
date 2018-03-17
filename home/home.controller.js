@@ -1,15 +1,25 @@
-﻿(function () {
+(function () {
     'use strict';
 
     angular
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['UserService', '$rootScope'];
-    function HomeController(UserService, $rootScope) {
+    HomeController.$inject = ['UserService', '$rootScope','$parse'];
+    function HomeController(UserService, $rootScope, $parse) {
         var vm = this;
 
         vm.user = null;
+        vm.isEdit7 = false;
+        vm.isEdit8 = false;
+        vm.isEdit10 = false;
+        vm.isEdit12 = false;
+        vm.isEdit13 = false;
+        vm.isEdit14 = false;
+        vm.isEdit17 = false;
+        vm.isEdit19 = false;
+        vm.isEdit20 = false;
+        vm.message  = null;
         vm.accounts = [];
         vm.projects = [];
         vm.resources = [];
@@ -17,6 +27,7 @@
         vm.loadProjects = loadProjects;
         vm.loadResources = loadResources;
         vm.searchByEmpId  = searchByEmpId;
+        vm.processEdit  = processEdit;
         
         initController();
 
@@ -33,30 +44,59 @@
         function loadAllAccounts() {
             console.log("loadAllAccounts");
             UserService.getAccounts()
-                .then(function (accounts) {
-                    vm.accounts = accounts;
+                .then(function (resources) {
+                    if(resources.success) vm.accounts = resources.holder;
+                    else vm.message = resources.holder;
                 });
         }
 
         function loadProjects(accountId){
             UserService.getProjects(accountId)
-                .then(function(projects){
-                    vm.projects = projects;
+                .then(function(resources){
+                    if(resources.success) vm.projects = resources.holder;
+                    else vm.message = resources.holder;
                 });
         }
 
         function loadResources(accountId,projectId){
             UserService.getResources(accountId,projectId)
                 .then(function(resources){
-                    vm.resources = resources;
+                    if(resources.success) vm.resources = resources.holder;
+                    else vm.message = resources.holder;
                 });
         }
 
         function searchByEmpId(empId){
             UserService.getResourcesByEmpId(empId)
                 .then(function(resources){
-                    vm.resources = resources;
+                    if(resources.success) vm.resources = resources.holder;
+                    else vm.message = resources.holder;
                 });
+        }
+
+        // Dynamically create,assign variable to the $scope
+        function processEdit(empId,wbscode,field,value,fieldFlag){
+            //Creating variable from string
+            var getter = $parse(fieldFlag);
+            var setter = getter.assign;
+            if(getter(vm) == false){
+                setter(vm,true);
+            }else {
+                UserService.updateValues(empId,wbscode,field,value)
+                    .then(function(resources){
+                        if(resources.success){
+                            setter(vm,false);
+                            vm.message  = "Data updated successfully !!";
+                        }else{
+                           vm.message  = resources.holder; 
+                        }
+                    });
+
+
+
+
+            }
+            
         }
 
        
